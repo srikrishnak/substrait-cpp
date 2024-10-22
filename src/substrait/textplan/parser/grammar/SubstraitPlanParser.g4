@@ -22,6 +22,7 @@ plan
 
 plan_detail
    : pipelines
+   | pipelines_plan
    | relation
    | root_relation
    | schema_definition
@@ -36,6 +37,10 @@ pipelines
 pipeline
    : pipeline ARROW relation_ref
    | relation_ref
+   ;
+
+pipelines_plan
+   : PLAN LEFTBRACE (MINUS? relation_ref)* RIGHTBRACE
    ;
 
 // TODO -- Make the token order involving ids consistent between relations and other top-level entities.
